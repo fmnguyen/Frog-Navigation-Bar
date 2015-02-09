@@ -1,0 +1,167 @@
+/* Styles for fmnguyen.com */
+
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+/**
+ * Reset.css
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Colors */
+$green: #16a55f;
+$white: #fff;
+$light_gray: #e4e1e2;
+$black: #000;
+
+/* Clearfix */
+.clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    @extend .clearfix;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* General Styles */
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+html {
+	background: $light_gray;
+}
+
+#wrapper {
+	@extend .clearfix;
+	width: 90%;
+	max-width: 1300px;
+	margin: 0 auto;
+	height: 2000px;
+	background: $white;
+}
+
+/* Navigation Styles */
+
+$nav_height: 80px;
+
+.nav-bar {
+	position: fixed;
+	z-index: 3;
+	ul {
+		overflow: hidden;
+	}
+
+	li {
+		height: $nav_height;
+	}
+	#logo {
+		position: fixed;
+		width: $nav_height;
+		background-image: url("../img/logo-01.png");
+		background-size: contain;	
+		height: $nav_height;
+		z-index: 2;
+		a {
+			display: block;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	/* This sets the state for each of the navigation bar items */
+	.nav-bar-item {
+		float: left;
+		position: relative;
+		margin-left: 0;
+		background: $light_gray;
+		-moz-transition: margin-left 0.5s;
+    	-webkit-transition: margin-left 0.5s;
+    	transition: margin-left 0.5s;
+    	&.first {
+    		margin-left: $nav_height;
+    	}
+
+    	& #home {
+		    &:hover {
+		    	cursor: default;
+		    	a { color: $green; cursor: default; }
+		    }
+    	}
+    	a {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    padding: 30px 30px 0 30px;
+		    font: 500 16px/20px "Lato", "Helvetica", "Arial", sans-serif;
+		    color: $green;
+		    text-decoration: none;
+    	}
+    	&.active,
+	    &:hover {
+	    	cursor: pointer;
+	    	background: $green;
+	    	a { color: $white; }
+	    }
+	    &.active:hover {
+	    	cursor: default;
+	    	a { cursor: default; }
+	    }
+	}
+}
+
